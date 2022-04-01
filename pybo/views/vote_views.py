@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import get_object_or_404, redirect
+from django.shortcuts import get_object_or_404, redirect, resolve_url
 
 from ..models import Question, Answer
 
@@ -22,4 +22,5 @@ def vote_answer(request, answer_id):
         messages.error(request, '본인이 작성한 글은 추천할수 없습니다')
     else:
         answer.voter.add(request.user)
-    return redirect('pybo:detail', question_id=answer.question.id)
+    return redirect('{}#answer_{}'.format(
+        resolve_url('pybo:detail', question_id=answer.question.id), answer.id))
