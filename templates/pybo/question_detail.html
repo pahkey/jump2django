@@ -6,8 +6,9 @@
         <div class="card-body">
             <div class="card-text" style="white-space: pre-line;">{{ question.content }}</div>
             <div class="d-flex justify-content-end">
-                <div class="badge bg-light text-dark p-2">
-                    {{ question.create_date }}
+                <div class="badge bg-light text-dark p-2 text-start">
+                    <div class="mb-2">{{ question.author.username }}</div>
+                    <div>{{ question.create_date }}</div>
                 </div>
             </div>
         </div>
@@ -18,8 +19,9 @@
         <div class="card-body">
             <div class="card-text" style="white-space: pre-line;">{{ answer.content }}</div>
             <div class="d-flex justify-content-end">
-                <div class="badge bg-light text-dark p-2">
-                    {{ answer.create_date }}
+                <div class="badge bg-light text-dark p-2 text-start">
+                    <div class="mb-2">{{ answer.author.username }}</div>
+                    <div>{{ answer.create_date }}</div>
                 </div>
             </div>
         </div>
@@ -44,7 +46,7 @@
         <div class="mb-3">
             <label for="content" class="form-label">답변내용</label>
             <textarea {% if not user.is_authenticated %}disabled{% endif %}
-              name="content" id="content" class="form-control" rows="10"></textarea>
+                      name="content" id="content" class="form-control" rows="10"></textarea>
         </div>
         <input type="submit" value="답변등록" class="btn btn-primary">
     </form>
