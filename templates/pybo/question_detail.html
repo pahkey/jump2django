@@ -43,7 +43,8 @@
         <!-- 오류표시 End -->
         <div class="mb-3">
             <label for="content" class="form-label">답변내용</label>
-            <textarea name="content" id="content" class="form-control" rows="10"></textarea>
+            <textarea {% if not user.is_authenticated %}disabled{% endif %}
+              name="content" id="content" class="form-control" rows="10"></textarea>
         </div>
         <input type="submit" value="답변등록" class="btn btn-primary">
     </form>
