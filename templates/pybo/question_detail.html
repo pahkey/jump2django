@@ -30,10 +30,14 @@
                 </div>
             </div>
             <div class="my-3">
+                <a href="javascript:void(0)" data-uri="{% url 'pybo:vote_question' question.id  %}"
+                   class="recommend btn btn-sm btn-outline-secondary"> 추천
+                    <span class="badge rounded-pill bg-success">{{question.voter.count}}</span>
+                </a>
                 {% if request.user == question.author %}
                 <a href="{% url 'pybo:question_modify' question.id  %}"
                    class="btn btn-sm btn-outline-secondary">수정</a>
-                <a href="#" class="delete btn btn-sm btn-outline-secondary"
+                <a href="javascript:void(0)" class="delete btn btn-sm btn-outline-secondary"
                    data-uri="{% url 'pybo:question_delete' question.id  %}">삭제</a>
                 {% endif %}
             </div>
@@ -58,10 +62,14 @@
                 </div>
             </div>
             <div class="my-3">
+                <a href="javascript:void(0)" data-uri="{% url 'pybo:vote_answer' answer.id  %}"
+                   class="recommend btn btn-sm btn-outline-secondary"> 추천
+                    <span class="badge rounded-pill bg-success">{{answer.voter.count}}</span>
+                </a>
                 {% if request.user == answer.author %}
                 <a href="{% url 'pybo:answer_modify' answer.id  %}"
                    class="btn btn-sm btn-outline-secondary">수정</a>
-                <a href="#" class="delete btn btn-sm btn-outline-secondary "
+                <a href="javascript:void(0)" class="delete btn btn-sm btn-outline-secondary "
                    data-uri="{% url 'pybo:answer_delete' answer.id  %}">삭제</a>
                 {% endif %}
             </div>
@@ -86,6 +94,14 @@ const delete_elements = document.getElementsByClassName("delete");
 Array.from(delete_elements).forEach(function(element) {
     element.addEventListener('click', function() {
         if(confirm("정말로 삭제하시겠습니까?")) {
+            location.href = this.dataset.uri;
+        };
+    });
+});
+const recommend_elements = document.getElementsByClassName("recommend");
+Array.from(recommend_elements).forEach(function(element) {
+    element.addEventListener('click', function() {
+        if(confirm("정말로 추천하시겠습니까?")) {
             location.href = this.dataset.uri;
         };
     });
