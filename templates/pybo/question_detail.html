@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="my-3">
-                <a href="javascript:void(0)" data-uri="{% url 'pybo:vote_question' question.id  %}"
+                <a href="javascript:void(0)" data-uri="{% url 'pybo:question_vote' question.id  %}"
                    class="recommend btn btn-sm btn-outline-secondary"> 추천
                     <span class="badge rounded-pill bg-success">{{question.voter.count}}</span>
                 </a>
@@ -62,7 +62,7 @@
                 </div>
             </div>
             <div class="my-3">
-                <a href="javascript:void(0)" data-uri="{% url 'pybo:vote_answer' answer.id  %}"
+                <a href="javascript:void(0)" data-uri="{% url 'pybo:answer_vote' answer.id  %}"
                    class="recommend btn btn-sm btn-outline-secondary"> 추천
                     <span class="badge rounded-pill bg-success">{{answer.voter.count}}</span>
                 </a>
