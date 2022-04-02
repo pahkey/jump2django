@@ -1,6 +1,7 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
 <div class="container my-3">
+    <!-- 질문 -->
     <h2 class="border-bottom py-2">{{ question.subject }}</h2>
     <div class="card my-3">
         <div class="card-body">
@@ -12,6 +13,7 @@
             </div>
         </div>
     </div>
+    <!-- 답변 -->
     <h5 class="border-bottom my-3 py-2">{{question.answer_set.count}}개의 답변이 있습니다.</h5>
     {% for answer in question.answer_set.all %}
     <div class="card my-3">
@@ -25,6 +27,7 @@
         </div>
     </div>
     {% endfor %}
+    <!-- 답변 등록 -->
     <form action="{% url 'pybo:answer_create' question.id %}" method="post" class="my-3">
         {% csrf_token %}
         <div class="mb-3">
