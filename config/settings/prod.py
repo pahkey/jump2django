@@ -1,4 +1,3 @@
-import os
 import environ
 
 from .base import *
@@ -9,7 +8,7 @@ STATICFILES_DIRS = []
 DEBUG = False
 
 env = environ.Env()
-environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+environ.Env.read_env(BASE_DIR / '.env')
 
 DATABASES = {
     'default': {
